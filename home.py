@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_extras.metric_cards import style_metric_cards
 
 kenyan_flag = "\U0001F1F0\U0001F1EA"
 
@@ -15,18 +16,17 @@ def main():
         """
     )
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.subheader('General Facts about Kenya')
-        st.write('Population')
-        st.metric('Population', '> 54.9 million', '1.9%')
-        st.write('Life Expectancy')
-        col1_1, col1_2 =st.columns(2)
-        col1_1.metric('Female','64 years')
-        col1_2.metric('Male','59 years')
-        st.write('Infant Mortality rate: 30/1000 live births')
-    with col2:
-        st.subheader('Health Facts about Kenya')
+    st.subheader('General Facts about Kenya')
+    st.write('Population')
+    st.metric('Population', '> 54.9 million', '1.9%')
+    st.write('Life Expectancy')
+    col1_1, col1_2 =st.columns(2)
+    col1_1.metric('Female','64 years')
+    col1_2.metric('Male','59 years')
+    st.write('Infant Mortality rate')
+    st.metric('Infant Mortality Rate','30/1000 live births')
+    style_metric_cards()
+    
         
 
 st.set_page_config(

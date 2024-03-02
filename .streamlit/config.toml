@@ -1,0 +1,9 @@
+[theme]
+base="light"
+backgroundColor="#dedede"
+font="monospace"
+
+[theme]
+base="dark"
+textColor="#bcbcd0"
+font="monospace"
