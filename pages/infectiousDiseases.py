@@ -79,13 +79,54 @@ def main():
     if selected_disease == 'Cholera':
         st.header('Cholera', divider='blue')
         st.subheader('Key Facts')
-        st.write('Cholera is an acute diarrhoeal disease that can kill within hours if left untreatedCholera is an acute diarrhoeal infection caused by ingestion of food or water contaminated with the bacterium Vibrio cholerae.')
+        st.write('Cholera is an acute diarrhoeal infection caused by ingestion of food or water contaminated with the bacterium Vibrio cholerae.')
         st.markdown("""
             ### Symptoms
-                    -Severe Acute Watery Diarrhoea
-                    -Fatigue due to dehydration
-                    -Vomiting
+                    - Severe Acute Watery Diarrhoea
+                    - Fatigue due to dehydration
+                    - Vomiting
                     """)
+        st.markdown("""
+            Sources: [CDC](https://www.cdc.gov/cholera/general/index.html) , [WHO](https://www.who.int/news-room/fact-sheets/detail/cholera)
+                    """)
+    
+        st.subheader('Trends',divider='blue')
+    elif selected_disease == 'Meningitis':
+        st.header('Meningitis', divider='Purple')
+        st.subheader('Key Facts')
+        st.write('Meningitis is the inflammation of the tissues surrounding the brain and spinal cord. It is usually caused by infection. It can be fatal and requires immediate medical care. Meningitis can be caused by several species of bacteria, viruses, fungi and parasites. Most infections can be transmitted from person to person.')
+
+        st.markdown("""
+            ### Symptoms
+                    - Severe Acute Watery Diarrhoea
+                    - Fatigue due to dehydration
+                    - Vomiting
+                    """)
+        st.markdown("""
+            Sources: [CDC](https://www.cdc.gov/cholera/general/index.html) , [WHO](https://www.who.int/news-room/fact-sheets/detail/cholera)
+                    """)
+    
+        st.subheader('Trends',divider='Purple')
+    elif selected_disease == 'Polio':
+        st.header('Polio', divider='Red')
+        st.subheader('Key Facts')
+        st.write('')
+        
+        st.markdown("""
+            ### Symptoms
+                    - Severe Acute Watery Diarrhoea
+                    - Fatigue due to dehydration
+                    - Vomiting
+                    """)
+        st.markdown("""
+            Sources: [CDC](https://www.cdc.gov/cholera/general/index.html) , [WHO](https://www.who.int/news-room/fact-sheets/detail/cholera)
+                    """)
+    
+        st.subheader('Trends',divider='Purple')
+ 
+
+
+
 st.set_page_config(
     page_title= "Infectious Diseases",
 )
