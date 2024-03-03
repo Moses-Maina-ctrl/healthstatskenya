@@ -72,9 +72,20 @@ def main():
     st.header('Definition', divider='gray')
     st.write('Infectious Diseases are diseases caused by pathogenic microorganisms, such as bacteria, viruses, parasites or fungi; the diseases can be transimitted, directly or indirectly, from one person to another')
     stoggle("Source","https://www.emro.who.int/health-topics/infectious-diseases/index.html")
+    st.header('Infectious Diseases', divider='gray')
+    st.write('Infectious diseases continue to pose significant health challenges in Kenya, affecting individuals, communities, and the nation\'s healthcare system. Aside from Malaria and Tuberculosi, there are numerous more diseases that continue to be prevalent in the Kenya.')
+    selected_disease = st.selectbox("Select Disease", diseases)
 
-    #selected_disease = st.selectbox("")
-
+    if selected_disease == 'Cholera':
+        st.header('Cholera', divider='blue')
+        st.subheader('Key Facts')
+        st.write('Cholera is an acute diarrhoeal disease that can kill within hours if left untreatedCholera is an acute diarrhoeal infection caused by ingestion of food or water contaminated with the bacterium Vibrio cholerae.')
+        st.markdown("""
+            ### Symptoms
+                    -Severe Acute Watery Diarrhoea
+                    -Fatigue due to dehydration
+                    -Vomiting
+                    """)
 st.set_page_config(
     page_title= "Infectious Diseases",
 )
