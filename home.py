@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_extras.metric_cards import style_metric_cards
+from streamlit_extras.stoggle import stoggle
 
 kenyan_flag = "\U0001F1F0\U0001F1EA"
 
@@ -25,7 +26,8 @@ def main():
     col1_2.metric('Male','59 years')
     st.write('Infant Mortality rate')
     st.metric('Infant Mortality Rate','30/1000 live births')
-    style_metric_cards()
+    stoggle('Source','https://www.cdc.gov/globalhealth/countries/kenya')
+    style_metric_cards(background_color="#0e1117")
     
         
 
