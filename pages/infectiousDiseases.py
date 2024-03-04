@@ -20,41 +20,44 @@ def main():
                 'ENDYEAR',
                 'COUNTRY (CODE)',
                 'COUNTRY (DISPLAY)'], axis=1)
+    
+    df_2 = df2[['GHO (CODE)','YEAR (DISPLAY)','Display Value']]
+ 
 
     #Cholera
-    cholera_mortality = df2[df2['GHO (CODE)'] == 'CHOLERA_0000000002']
-    cholera_reported_cases = df2[df2['GHO (CODE)'] == 'CHOLERA_0000000001']
-    cholera_fatality_rate= df2[df2['GHO (CODE)'] == 'CHOLERA_0000000003']
+    cholera_mortality = df_2[df_2['GHO (CODE)'] == 'CHOLERA_0000000002']
+    cholera_reported_cases = df_2[df_2['GHO (CODE)'] == 'CHOLERA_0000000001']
+    cholera_fatality_rate= df_2[df_2['GHO (CODE)'] == 'CHOLERA_0000000003']
 
     #Meningitis
-    mening_suspected_deaths =df2[df2['GHO (CODE)'] == 'MENING_1']
+    mening_suspected_deaths =df_2[df_2['GHO (CODE)'] == 'MENING_1']
 
     #Polio
-    polio_reported_cases =df2[df2['GHO (CODE)'] == 'WHS3_49']
+    polio_reported_cases =df_2[df_2['GHO (CODE)'] == 'WHS3_49']
 
     #Diptheria
-    diptheria_reported_cases = df2[df2['GHO (CODE)'] == 'WHS3_41']
+    diptheria_reported_cases = df_2[df_2['GHO (CODE)'] == 'WHS3_41']
 
     #Pertussis
-    pertussis_reported_cases = df2[df2['GHO (CODE)'] == 'WHS3_43']
+    pertussis_reported_cases = df_2[df_2['GHO (CODE)'] == 'WHS3_43']
 
     #Tetanus
-    tetanus_reported_cases = df2[df2['GHO (CODE)'] == 'WHS3_46']
+    tetanus_reported_cases = df_2[df_2['GHO (CODE)'] == 'WHS3_46']
 
     #Yellow Fever
-    yellow_reported_cases = df2[df2['GHO (CODE)'] == 'WHS3_50']
+    yellow_reported_cases = df_2[df_2['GHO (CODE)'] == 'WHS3_50']
 
     #Mumps
-    mumps_reported_cases = df2[df2['GHO (CODE)'] == 'WHS3_53']
+    mumps_reported_cases = df_2[df_2['GHO (CODE)'] == 'WHS3_53']
 
     #NeoTetanus
-    neotetanus_reported_cases = df2[df2['GHO (CODE)'] == 'WHS3_56']
+    neotetanus_reported_cases = df_2[df_2['GHO (CODE)'] == 'WHS3_56']
 
     #Rubella
-    rubella_reported_cases = df2[df2['GHO (CODE)'] == 'WHS3_57']
+    rubella_reported_cases = df_2[df_2['GHO (CODE)'] == 'WHS3_57']
 
     #Measles
-    measles_reported_cases = df2[df2['GHO (CODE)'] == 'WHS3_62']
+    measles_reported_cases = df_2[df_2['GHO (CODE)'] == 'WHS3_62']
 
     ##
     diseases =['Cholera',
@@ -93,19 +96,15 @@ def main():
     
         st.subheader('Trends',divider='blue')
         #Charts
-        cholera_mortality_val = cholera_mortality[['YEAR (DISPLAY)','Display Value']]
-        cholera_mortality_val = cholera_mortality_val.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Deaths'})
+        
+        cholera_mortality_val = cholera_mortality.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Deaths'})
         chol_mort_chart = alt.Chart(cholera_mortality_val).mark_line().encode(
               x = 'Years',
               y = 'Number of Deaths'
         ).properties(
               width=600,
               height= 400,
-              title= alt.TitleParams(
-                text='<div style="text-align: center; text-decoration: underline;">Cases by Year</div>',
-                align='center',
-                dy=-10
-        )
+              title= 'Number of Reported Deaths'
         )
         st.write(chol_mort_chart)
         stoggle("Source","Humanitarian Data Exchange")
