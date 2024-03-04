@@ -106,8 +106,6 @@ def main():
               title= 'Number of Reported Cases of Cholera'
         )
         st.write(chol_cases_chart)
-
-       
         cholera_mortality_val = cholera_mortality.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Deaths'})
         chol_mort_chart = alt.Chart(cholera_mortality_val).mark_line().encode(
               x = 'Years',
@@ -129,8 +127,6 @@ def main():
               title= 'Cholera Case Fatality Rate'
         )
         st.write(chol_fatal_chart)
-
-
         stoggle("Source","Humanitarian Data Exchange")
         st.markdown("""
             [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
@@ -163,8 +159,6 @@ def main():
               title= 'Suspected Meningitis Deaths Reported yearly'
         )
         st.write(mening_chart)
-
-
         stoggle("Source","Humanitarian Data Exchange")
         st.markdown("""
             [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
@@ -197,8 +191,6 @@ def main():
 
         )
         st.write(polio_chart)
-
-
         stoggle("Source","Humanitarian Data Exchange")
         st.markdown("""
             [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
@@ -218,7 +210,6 @@ def main():
             st.markdown("""
                 Sources: [CDC](https://www.cdc.gov/diphtheria/about/symptoms.html)  
                         """)
-        
             st.subheader('Trends',divider='gray')
             diptheria_val= diptheria_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Diptheria Cases'})
             diptheria_chart= alt.Chart(diptheria_val).mark_line().encode(
@@ -227,12 +218,10 @@ def main():
             ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Polio Cases Yearly'
+              title= 'Number of Reported Diptheria Cases Yearly'
 
             )
             st.write(diptheria_chart)
-
-
             stoggle("Source","Humanitarian Data Exchange")
             st.markdown("""
                  [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
@@ -254,6 +243,21 @@ def main():
                         """)
         
             st.subheader('Trends',divider='green')
+            pertussis_val= pertussis_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Pertussis Cases'})
+            pertussis_chart= alt.Chart(pertussis_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Pertussis Cases'
+            ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Pertussis Cases Yearly'
+
+            )
+            st.write(pertussis_chart)
+            stoggle("Source","Humanitarian Data Exchange")
+            st.markdown("""
+                 [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
     
     elif selected_disease == 'Tetanus':
             st.header('Tetanus', divider='orange')
@@ -270,6 +274,21 @@ def main():
             st.markdown("""
                 Sources: [CDC](https://www.cdc.gov/tetanus/index.html)  
                         """)
+            tetanus_val= tetanus_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Tetanus Cases'})
+            tetanus_chart= alt.Chart(tetanus_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Tetanus Cases'
+            ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Tetanus Cases Yearly'
+
+            )
+            st.write(tetanus_chart)
+            stoggle("Source","Humanitarian Data Exchange")
+            st.markdown("""
+                 [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
         
             st.subheader('Trends',divider='orange')
     elif selected_disease == 'Yellow Fever':
@@ -288,7 +307,22 @@ def main():
                         """)
         
             st.subheader('Trends',divider='gray')
- 
+            yellow_val= yellow_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Yellow Fever Cases'})
+            yellow_chart= alt.Chart(yellow_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Yellow Fever Cases'
+            ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Yellow Fever Cases Yearly'
+
+            )
+            st.write(yellow_chart)
+            stoggle("Source","Humanitarian Data Exchange")
+            st.markdown("""
+                 [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+
     elif selected_disease == 'Mumps':
             st.header('Mumps', divider='green')
             st.subheader('Key Facts')
@@ -305,7 +339,22 @@ def main():
                         """)
         
             st.subheader('Trends',divider='gray')
- 
+            mumps_val= mumps_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Mumps Cases'})
+            mumps_chart= alt.Chart(mumps_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Mumps Cases'
+            ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Mumps Cases Yearly'
+
+            )
+            st.write(mumps_chart)
+            stoggle("Source","Humanitarian Data Exchange")
+            st.markdown("""
+                 [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+
     elif selected_disease == 'Neonatal Tetanus':
             st.header('Neonatal Tetanus', divider='orange')
             st.subheader('Key Facts')
@@ -322,7 +371,23 @@ def main():
                         """)
         
             st.subheader('Trends',divider='orange')
- 
+            neo_val= neotetanus_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Neonatal Tetanus Cases'})
+            neo_chart= alt.Chart(neo_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Neonatal Tetanus Cases'
+            ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Neonatal Tetanus Cases Yearly'
+
+            )
+            st.write(neo_chart)
+            stoggle("Source","Humanitarian Data Exchange")
+            st.markdown("""
+                 [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+
+
     elif selected_disease == 'Rubella':
             st.header('Pink', divider='violet')
             st.subheader('Key Facts')
@@ -339,6 +404,23 @@ def main():
                         """)
         
             st.subheader('Trends',divider='orange')
+
+            rubella_val= rubella_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Rubella Cases'})
+            neo_chart= alt.Chart(neo_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Neonatal Tetanus Cases'
+            ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Neonatal Tetanus Cases Yearly'
+
+            )
+            st.write(neo_chart)
+            stoggle("Source","Humanitarian Data Exchange")
+            st.markdown("""
+                 [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+
     elif selected_disease == 'Measles':
             st.header('Measles', divider='red')
             st.subheader('Key Facts')
