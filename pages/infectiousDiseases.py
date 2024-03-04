@@ -153,6 +153,23 @@ def main():
                     """)
     
         st.subheader('Trends',divider='violet')
+        mening_reported= mening_suspected_deaths.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Suspected Meningitis Deaths Reported'})
+        mening_chart= alt.Chart(mening_reported).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Suspected Meningitis Deaths Reported'
+        ).properties(
+              width=600,
+              height= 400,
+              title= 'Suspected Meningitis Deaths Reported yearly'
+        )
+        st.write(mening_chart)
+
+
+        stoggle("Source","Humanitarian Data Exchange")
+        st.markdown("""
+            [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+ 
     elif selected_disease == 'Polio':
         st.header('Polio', divider='red')
         st.subheader('Key Facts')
@@ -169,6 +186,24 @@ def main():
                     """)
     
         st.subheader('Trends',divider='red')
+        polio_val= polio_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Polio Cases'})
+        polio_chart= alt.Chart(polio_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Polio Cases'
+        ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Polio Cases Yearly'
+
+        )
+        st.write(polio_chart)
+
+
+        stoggle("Source","Humanitarian Data Exchange")
+        st.markdown("""
+            [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+ 
     elif selected_disease == 'Diptheria':
             st.header('Diptheria', divider='grey')
             st.subheader('Key Facts')
@@ -185,6 +220,24 @@ def main():
                         """)
         
             st.subheader('Trends',divider='gray')
+            diptheria_val= diptheria_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Diptheria Cases'})
+            diptheria_chart= alt.Chart(diptheria_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Diptheria Cases'
+            ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Polio Cases Yearly'
+
+            )
+            st.write(diptheria_chart)
+
+
+            stoggle("Source","Humanitarian Data Exchange")
+            st.markdown("""
+                 [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+ 
     elif selected_disease == 'Pertussis':
             st.header('Pertussis', divider='green')
             st.subheader('Key Facts')
