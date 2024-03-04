@@ -9,18 +9,6 @@ def main():
     df= pd.DataFrame(data)
     #Cleaning data
     df2 = df.dropna(axis=1, how='all')
-    df2 = df2.drop(['GHO (URL)',
-                'PUBLISHSTATE (CODE)',
-                'PUBLISHSTATE (DISPLAY)',
-                'REGION (CODE)',
-                'REGION (DISPLAY)',
-                'COUNTRY (CODE)',
-                'YEAR (CODE)',
-                'STARTYEAR',
-                'ENDYEAR',
-                'COUNTRY (CODE)',
-                'COUNTRY (DISPLAY)'], axis=1)
-    
     df_2 = df2[['GHO (CODE)','YEAR (DISPLAY)','Display Value']]
  
 
@@ -61,6 +49,7 @@ def main():
 
     ##
     diseases =['Cholera',
+            'Malaria',
             'Meningitis',
             'Polio',
             'Diptheria',
@@ -132,7 +121,8 @@ def main():
             [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
                     """)
  
-
+    elif selected_disease == 'Malaria':
+           malaria()
     elif selected_disease == 'Meningitis':
         st.header('Meningitis', divider='violet')
         st.subheader('Key Facts')
@@ -156,7 +146,7 @@ def main():
         ).properties(
               width=600,
               height= 400,
-              title= 'Suspected Meningitis Deaths Reported yearly'
+              title= 'Suspected Meningitis Deaths Reported Annually'
         )
         st.write(mening_chart)
         stoggle("Source","Humanitarian Data Exchange")
@@ -187,7 +177,7 @@ def main():
         ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Polio Cases Yearly'
+              title= 'Number of Reported Polio Cases Annually'
 
         )
         st.write(polio_chart)
@@ -218,7 +208,7 @@ def main():
             ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Diptheria Cases Yearly'
+              title= 'Number of Reported Diptheria Cases Annually'
 
             )
             st.write(diptheria_chart)
@@ -250,7 +240,7 @@ def main():
             ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Pertussis Cases Yearly'
+              title= 'Number of Reported Pertussis Cases Annually'
 
             )
             st.write(pertussis_chart)
@@ -281,7 +271,7 @@ def main():
             ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Tetanus Cases Yearly'
+              title= 'Number of Reported Tetanus Cases Annually'
 
             )
             st.write(tetanus_chart)
@@ -314,7 +304,7 @@ def main():
             ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Yellow Fever Cases Yearly'
+              title= 'Number of Reported Yellow Fever Cases Annually'
 
             )
             st.write(yellow_chart)
@@ -346,7 +336,7 @@ def main():
             ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Mumps Cases Yearly'
+              title= 'Number of Reported Mumps Cases Annually'
 
             )
             st.write(mumps_chart)
@@ -378,7 +368,7 @@ def main():
             ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Neonatal Tetanus Cases Yearly'
+              title= 'Number of Reported Neonatal Tetanus Cases Annually'
 
             )
             st.write(neo_chart)
@@ -406,16 +396,16 @@ def main():
             st.subheader('Trends',divider='orange')
 
             rubella_val= rubella_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Rubella Cases'})
-            neo_chart= alt.Chart(neo_val).mark_line().encode(
+            rubella_chart= alt.Chart(rubella_val).mark_line().encode(
               x = 'Years',
-              y = 'Number of Reported Neonatal Tetanus Cases'
+              y = 'Number of Reported Rubella Cases'
             ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Neonatal Tetanus Cases Yearly'
+              title= 'Number of Reported Rubella Cases Annually'
 
             )
-            st.write(neo_chart)
+            st.write(rubella_chart)
             stoggle("Source","Humanitarian Data Exchange")
             st.markdown("""
                  [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
@@ -438,7 +428,94 @@ def main():
         
             st.subheader('Trends',divider='red')
             
- 
+            measles_val= measles_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Reported Measles Cases'})
+            measles_chart= alt.Chart(measles_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Reported Measles Cases'
+            ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Measles Cases Annually'
+
+            )
+            st.write(measles_chart)
+            stoggle("Source","Humanitarian Data Exchange")
+            st.markdown("""
+                 [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+
+def malaria():
+        malariaUrl='https://data.humdata.org/dataset/b239ef6c-910d-4347-ba87-2d21a23f03fa/resource/71904d91-8e70-4f87-844b-88a0648a8bad/download/malaria_indicators_ken.csv'
+        malaria_data = pd.read_csv(malariaUrl)
+        malaria_df= pd.DataFrame(malaria_data)
+        #Cleaning data
+        malaria_df2 =malaria_df.dropna(axis=1, how='all')
+        malaria_df2 = malaria_df2[['GHO (CODE)','YEAR (DISPLAY)','Numeric']]
+       #malaria
+        estimated_cases = malaria_df2[malaria_df2['GHO (CODE)'] == 'MALARIA_EST_CASES']
+        confirmed_cases = malaria_df2[malaria_df2['GHO (CODE)'] == 'MALARIA_CONF_CASES']
+        estimated_death = malaria_df2[malaria_df2['GHO (CODE)'] == 'MALARIA_EST_DEATHS']
+        estimated_mortality_rate = malaria_df2[malaria_df2['GHO (CODE)'] == 'MALARIA_EST_MORTALITY']
+        st.header('Malaria', divider='blue')
+        st.subheader('Key Facts')
+        st.write('Malaria is a life-threatening disease caused by parasites that are transmitted to people through the bites of infected female Anopheles mosquitoes')
+        st.markdown("""
+            ### Symptoms:
+                    - Fever
+                    - Chills 
+                    - Muscle or joint pain
+                    - Abdominal pain
+                    """)
+        st.markdown("""
+            Sources:  , [WHO](https://www.who.int/news-room/fact-sheets/detail/malaria)
+                    """)
+    
+        st.subheader('Trends',divider='blue')
+        
+        #Charts
+        mal_est =estimated_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Numeric':'Estimated Number of Malaria Cases'})
+        mal_est_chart = alt.Chart(mal_est).mark_line().encode(
+              x = 'Years',
+              y = 'Estimated Number of Malaria Cases'
+        ).properties(
+              width=600,
+              height= 400,
+              title= 'Estimated Number of Malaria Cases'
+        )
+        st.write(mal_est_chart)
+        conf_cases = confirmed_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Numeric':'Number of confirmed malaria cases'})
+        conf_chart = alt.Chart(conf_cases).mark_line().encode(
+              x = 'Years',
+              y = 'Number of confirmed malaria cases'
+        ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of confirmed malaria cases Annually'
+        )
+        st.write(conf_chart)
+        est_death =estimated_death.rename(columns={'YEAR (DISPLAY)':'Years', 'Numeric':'Estimated Number of Deaths caused by Malaria'})
+        est_death_chart = alt.Chart(est_death).mark_line().encode(
+              x = 'Years',
+              y = 'Estimated Number of Deaths caused by Malaria'
+        ).properties(
+              width=600,
+              height= 400,
+              title= 'Estimated Number of Deaths caused by Malaria'
+        )
+        st.write(est_death_chart)
+        est_rate = estimated_mortality_rate.rename(columns={'YEAR (DISPLAY)':'Years', 'Numeric':'Estimated malaria incidence (per 1000 population at risk)'})
+        rate_chart = alt.Chart(est_rate).mark_line().encode(
+              x = 'Years',
+              y = 'Estimated malaria incidence (per 1000 population at risk)'
+        ).properties(
+              width=600,
+              height= 400,
+              title= 'Estimated malaria incidence (per 1000 population at risk)'
+        )
+        st.write(rate_chart)
+        
+
+
 
 st.set_page_config(
     page_title= "Infectious Diseases",
