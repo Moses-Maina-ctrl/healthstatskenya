@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import altair as alt
 from streamlit_extras.stoggle import stoggle
 
 def main():
@@ -91,7 +92,28 @@ def main():
                     """)
     
         st.subheader('Trends',divider='blue')
-        st.line_chart(cholera_mortality, x='YEAR (DISPLAY)', y='Display Value')
+        #Charts
+        cholera_mortality_val = cholera_mortality[['YEAR (DISPLAY)','Display Value']]
+        cholera_mortality_val = cholera_mortality_val.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Deaths'})
+        chol_mort_chart = alt.Chart(cholera_mortality_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Deaths'
+        ).properties(
+              width=600,
+              height= 400,
+              title= alt.TitleParams(
+                text='<div style="text-align: center; text-decoration: underline;">Cases by Year</div>',
+                align='center',
+                dy=-10
+        )
+        )
+        st.write(chol_mort_chart)
+        stoggle("Source","Humanitarian Data Exchange")
+        st.markdown("""
+            [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
+                    """)
+ 
+
     elif selected_disease == 'Meningitis':
         st.header('Meningitis', divider='violet')
         st.subheader('Key Facts')
