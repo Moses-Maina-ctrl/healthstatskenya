@@ -96,7 +96,18 @@ def main():
     
         st.subheader('Trends',divider='blue')
         #Charts
-        
+        cholera_reported_cases_val =cholera_reported_cases.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Cases'})
+        chol_cases_chart = alt.Chart(cholera_reported_cases_val).mark_line().encode(
+              x = 'Years',
+              y = 'Number of Cases'
+        ).properties(
+              width=600,
+              height= 400,
+              title= 'Number of Reported Cases of Cholera'
+        )
+        st.write(chol_cases_chart)
+
+       
         cholera_mortality_val = cholera_mortality.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Number of Deaths'})
         chol_mort_chart = alt.Chart(cholera_mortality_val).mark_line().encode(
               x = 'Years',
@@ -104,9 +115,22 @@ def main():
         ).properties(
               width=600,
               height= 400,
-              title= 'Number of Reported Deaths'
+              title= 'Number of Reported Deaths from Cholera'
         )
         st.write(chol_mort_chart)
+
+        cholera_fatal_val = cholera_fatality_rate.rename(columns={'YEAR (DISPLAY)':'Years', 'Display Value':'Fatality Rate'})
+        chol_fatal_chart = alt.Chart(cholera_fatal_val).mark_line().encode(
+              x = 'Years',
+              y = 'Fatality Rate'
+        ).properties(
+              width=600,
+              height= 400,
+              title= 'Cholera Case Fatality Rate'
+        )
+        st.write(chol_fatal_chart)
+
+
         stoggle("Source","Humanitarian Data Exchange")
         st.markdown("""
             [HDX Kenya-Health Indicators](https://data.humdata.org/dataset/who-data-for-kenya?) 
