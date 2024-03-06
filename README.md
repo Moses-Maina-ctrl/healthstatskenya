@@ -2,6 +2,7 @@
 ## Overview
 
 This Streamlit application provides interactive data visualization for infectious diseases in Kenya. Users can explore trends and patterns of various diseases over time through intuitive charts and graphs.
+[Demo](https://healthstatskenya.streamlit.app/)
 
 ## Features
 
