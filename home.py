@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_extras.metric_cards import style_metric_cards
 from streamlit_extras.stoggle import stoggle
-from st_pages import Page, Section, show_pages, add_page_title
 
 
 kenyan_flag = "\U0001F1F0\U0001F1EA"
