@@ -30,7 +30,7 @@ def main():
     st.metric('Infant Mortality Rate','30/1000 live births')
     stoggle('Source','https://www.cdc.gov/globalhealth/countries/kenya')
     style_metric_cards(background_color="#0e1117")
-    st.link_button("Get Informed About Infectious Diseases",url="/1_infectiousDiseases.py") 
+    st.link_button("Get Informed About Infectious Diseases",url="/InfectiousDiseases") 
         
 
 st.set_page_config(
@@ -41,10 +41,4 @@ st.set_page_config(
 if __name__ == "__main__":
     main()
 
-show_pages(
-    [
-        Page("home.py", "Home", "🏠"),
-        Section("Infectious Diseases"),
-        Page("pages/1_infectiousDiseases.py", "Infectious Diseases")
-    ]
-) 
+ 
